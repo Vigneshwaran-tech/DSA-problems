@@ -1,1 +1,38 @@
+# Maximum Frequency of an Element in an Array
+
+## 📌 Problem Statement
+Given an array `nums` and an integer `k`, we can perform at most `k` operations where we increment an element by `1`. The goal is to maximize the frequency of any number in `nums` by making some elements equal. 
+
+## 🚀 Approach
+The solution uses a **sliding window technique** with sorting:
+1. **Sort the Array** - To ensure elements are in increasing order.
+2. **Sliding Window** - Expands the window from the left while keeping operations within `k`.
+3. **Check Condition** - If the required operations exceed `k`, shrink the window from the left.
+4. **Update Maximum Frequency** - Keep track of the largest valid window.
+
+## 🛠️ Code Implementation (C++)
+```cpp
+class Solution {
+public:
+    int maxFrequency(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());  // Step 1: Sort the array
+        int left = 0;  // Left pointer
+        int ans = 0;  // To store max frequency
+        long curr = 0;  // To store the sum of elements in the current window
+        
+        for (int right = 0; right < nums.size(); right++) {  // Expanding the window
+            long target = nums[right];  // The number we want to make all elements equal to
+            curr += target;  // Add target to the sum
+            
+            while ((right - left + 1) * target - curr > k) {  // If required operations exceed k, shrink the window
+                curr -= nums[left];  // Remove the leftmost element
+                left++;  // Move left pointer
+            }
+            
+            ans = max(ans, right - left + 1);  // Update max frequency
+        }
+        
+        return ans;  // Return the maximum frequency found
+    }
+};
 
