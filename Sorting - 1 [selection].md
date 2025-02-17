@@ -93,3 +93,31 @@ int main() {
 
     return 0;
 }
+
+## 📂 How to Run the Code
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/DSA-Solutions.git
+   ```
+2. Compile the code:
+   ```sh
+   g++ maxFrequency.cpp -o maxFrequency
+   ```
+3. Run the program:
+   ```sh
+   ./maxFrequency
+   ```
+
+---
+
+## 🤝 Contributing
+
+Feel free to open issues or submit pull requests to improve the algorithm! 🚀
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
